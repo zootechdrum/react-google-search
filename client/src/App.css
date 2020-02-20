@@ -1,7 +1,30 @@
-@import url('<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700&display=swap" rel="stylesheet">');
-
-html, body{
-  font-family: 'Raleway', serif;
+html,
+body,
+#root {
   height: 100%;
-  scroll-behavior: smooth;
+}
+
+.error-card{
+  border: 2px black solid;
+  padding: 25px;
+  border-radius: 5px;
+  max-height: 500px;
+  position:relative;
+  text-align: center;
+}
+
+.text{
+  margin-top:-15px;
+}
+
+.error-code{
+  border-bottom: 1px solid black;
+  width: 250px;
+  font-size: 8em;
+}
+
+.card-button {
+  position:absolute;
+  margin-left:80px;
+  display: block;
 }

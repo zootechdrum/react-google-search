@@ -3,16 +3,18 @@ import React from "react";
 
 function NoMatch() {
   return (
-    <div class="container">
-
-            <h1>404</h1>
-            <div>
-                <p>The page you're looking</p>
-                <p>for can't be found.</p>
-                
-            </div>
-
+<div class=" h-100 d-flex justify-content-center align-items-center">
+  <div class="error-card text-center">
+    <div class=" d-flex justify-content-center">
+    <h1 class="error-code ">404</h1>
     </div>
+    <p>The page you are looking </p>
+    <p class="text">for does not exist</p>
+    <button  type="button" class="btn btn-warning card-button">Go Home</button>
+  </div>
+</div>
+
+
   );
 }
 

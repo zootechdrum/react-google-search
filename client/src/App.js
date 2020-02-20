@@ -8,13 +8,13 @@ import './App.css';
 function App() {
   return (    
   <Router>
-    <div>
+
       <Nav />
       <Switch>
         <Route exact path="/" component={SearchBooks} />
         <Route component={NoMatch} />
       </Switch>
-    </div>
+
   </Router>
   );
 }

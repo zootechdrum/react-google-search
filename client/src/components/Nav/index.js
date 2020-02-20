@@ -2,8 +2,8 @@ import React from "react";
 
 function Nav() {
   return (
-  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-  <a class="navbar-brand" href="#">Search Google Books</a>
+  <nav className="navbar navbar-light custom-nav-color">
+  <a className="navbar-brand" href="#">Search Google Books</a>
 </nav>
   );
 }
