@@ -8,9 +8,11 @@ function Card() {
     <div class=" d-flex justify-content-center">
     <h1 class="error-code ">404</h1>
     </div>
-    <p>The page you are looking </p>
+    <p class="">The page you are looking </p>
     <p class="text">for does not exist</p>
+    <a href="/">
     <button  type="button" class="btn btn-warning card-button">Go Home</button>
+    </a>
   </div>
 </div>
   );

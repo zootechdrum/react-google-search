@@ -1,4 +1,5 @@
 .error-card{
+    font-size: 1em;
     border: 2px black solid;
     padding: 25px;
     border-radius: 5px;
@@ -13,12 +14,12 @@
   
   .error-code{
     border-bottom: 1px solid black;
-    width: 250px;
-    font-size: 8em;
+    width: 450px;
+    font-size: 13em;
   }
   
   .card-button {
-    position:absolute;
-    margin-left:80px;
-    display: block;
+      margin-top:5px;
+      margin-left: -53px;
+      position:absolute;
   }
