@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 function Card() {
@@ -10,7 +11,7 @@ function Card() {
     </div>
     <p class="">The page you are looking </p>
     <p class="text">for does not exist</p>
-    <a href="/">
+    <a path="/">
     <button  type="button" class="btn btn-warning card-button">Go Home</button>
     </a>
   </div>
