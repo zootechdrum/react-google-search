@@ -5,7 +5,7 @@ import Card from '../components/Card'
 function NoMatch() {
   return (
 
-<Card />
+    <Card />
 
   );
 }
