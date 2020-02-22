@@ -16,38 +16,50 @@ class SearchBooks extends Component {
   componentDidMount() {
     this.loadBooks();
   }
+  
+  checkData = (data) => {
+
+  }
 
   loadBooks = () => {
     API.getBooks()
     //  .then(res => console.log(res.data.items[0].volumeInfo.title))
-    .then(res => this.setState({ booksData: res.data.items },this.callcon))
+    .then(res => res.data.items.filter( data => data.searchInfo ))
+     .then(data => this.setState({booksData: data }))
 
 
 
   }
   callcon = () => {
     this.state.booksData.map((book,index) => {
-      console.log(book.volumeInfo.title)
+      console.log(book)
+      if(book.searchInfo !== undefined) {
+        console.log(book.searchInfo.textSnippet)
+      }
     })
   }
 
   render() {
     return (
-        <div className="conatiner">
+      <div>
           <Jumbotron backgroundColor="#E6E6FA" >
-            <img className="img-fluid" src = {booksImg} alt="pokemon" />
+            <img className="img-fluid books-img" src = {booksImg} alt="pokemon" />
           </Jumbotron>
+        <div className="container">
           {this.state.booksData.length ? (
               <List>
                 {this.state.booksData.map((book, index) => (
                   <ListItem >
                     <p>{book.volumeInfo.title}</p>
+                    <img className="img-fluid books-img" src = {book.volumeInfo.imageLinks.thumbnail} alt="pokemon" />
+                    <p>{book.searchInfo.textSnippet}</p>
                   </ListItem>
                 ))}
               </List>
             ) : (
               <h3>No Results to Display</h3>
             )}
+        </div>
         </div>
     );
   }

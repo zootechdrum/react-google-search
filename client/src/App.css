@@ -4,3 +4,37 @@ body,
   height: 100%;
 }
 
+.jumbotron {
+  margin-bottom:0px;
+}
+
+.container {
+ padding-right: 0px;
+ padding-left: 0px;
+}
+
+
+
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .books-img {
+    margin-top:1em;
+   }
+   .jumbotron {
+    margin-bottom:120px;
+   }
+
+}
+
+@media only screen and (min-width: 768px) {
+  /* For Desktop: */
+  .books-img {
+    margin-top:1em;
+   }
+
+
+}
+
+
+
