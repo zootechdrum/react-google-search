@@ -9,7 +9,7 @@ import { List, ListItem } from "../components/List";
 class SearchBooks extends Component {
   state = {
 
-    booksData:["Hello"]
+    booksData:[]
 
   };
 
@@ -19,12 +19,17 @@ class SearchBooks extends Component {
 
   loadBooks = () => {
     API.getBooks()
-    // .then(res => console.log(res.data))
-    .then(res => this.setState({ booksData: res.data.items }))
+    //  .then(res => console.log(res.data.items[0].volumeInfo.title))
+    .then(res => this.setState({ booksData: res.data.items },this.callcon))
+
 
 
   }
-
+  callcon = () => {
+    this.state.booksData.map((book,index) => {
+      console.log(book.volumeInfo.title)
+    })
+  }
 
   render() {
     return (
@@ -34,9 +39,9 @@ class SearchBooks extends Component {
           </Jumbotron>
           {this.state.booksData.length ? (
               <List>
-                {this.state.booksData.map(book => (
+                {this.state.booksData.map((book, index) => (
                   <ListItem >
-                    <p>{book.id}</p>
+                    <p>{book.volumeInfo.title}</p>
                   </ListItem>
                 ))}
               </List>
