@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-
+import booksImg from "../images/books1.png"
 import API from "../utils/API";
+import Jumbotron from "../components/Jumbotron"
 import { Link } from "react-router-dom";
 
 
 class SearchBooks extends Component {
   state = {
-    books: [],
-    title: "",
-    author: "",
-    synopsis: ""
+
   };
 
   componentDidMount() {
@@ -19,10 +17,6 @@ class SearchBooks extends Component {
   loadBooks = () => {
     API.getBooks()
     .then(res => console.log(res.data))
-      // .then(res =>
-      //   this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      // )
-      // .catch(err => console.log(err));
   };
 
 
@@ -30,6 +24,9 @@ class SearchBooks extends Component {
   render() {
     return (
         <div className="conatiner">
+          <Jumbotron backgroundColor="#E6E6FA" >
+          <img className="img-fluid" src = {booksImg} alt="pokemon" />
+          </Jumbotron>
           
         </div>
     );

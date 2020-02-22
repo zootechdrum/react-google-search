@@ -13,13 +13,13 @@
   }
   
   .error-code{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid black;  
     width: 450px;
     font-size: 13em;
   }
   
   .card-button {
-      margin-top:5px;
-      margin-left: -53px;
+      margin-top:25px;
+      transform: translate(-50%, -50%);
       position:absolute;
   }
