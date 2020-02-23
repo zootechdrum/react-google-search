@@ -27,11 +27,22 @@ class SearchBooks extends Component {
       [name]: value
     });
   };
+
+  //This function is to validate data that comes back grom api call.
+  // Makes sure all data is available so it does not brake our app
+  dataValidator = arr => {
+    if(arr.volumeInfo.imageLinks !== undefined &&
+       arr.volumeInfo.description !== undefined &&
+       arr.searchInfo !== undefined
+    ) 
+    {
+      return arr;
+    }
   
+  }
 
   loadBooks = () => {
     API.getBooks()
-    //  .then(res => console.log(res.data.items[0].volumeInfo.title))
     .then(res => res.data.items.filter( data => data.searchInfo ))
 
      .then(data => this.setState({booksData: data }))
@@ -39,11 +50,11 @@ class SearchBooks extends Component {
   }
 
   handleFormSubmit = event => {
-    console.log("Hello")
     // When the form is submitted, prevent its default behaviour and get new books
     event.preventDefault();
     API.getBooks(this.state.title)
-    .then(res => this.setState({booksData: res.data.items }))
+    .then(res => res.data.items.filter(this.dataValidator))
+    .then(data => this.setState({booksData: data }))
 
   };
 
@@ -51,11 +62,11 @@ class SearchBooks extends Component {
     return (
       <div>
           <Jumbotron backgroundColor="#E6E6FA" >
-            <img className="img-fluid books-img" src = {booksImg} alt="pokemon" />
+            <img className="img-fluid books-img" src = {booksImg} alt="book thumbnail" />
           </Jumbotron>
         <div className="container">
           <div className="row">
-            <div class="col-12">
+            <div className="col-12">
               <form>
                   <Input
                     value={this.state.title}
@@ -85,7 +96,7 @@ class SearchBooks extends Component {
                       <div className="col-md-8">
                         <div className="card-body">
                           <h5 className="card-title">{book.volumeInfo.title}</h5>
-                          <p className="card-text">{book.volumeInfo.description}</p>
+                          <p className="card-text">{book.volumeInfo.description.substr(0,150) + "..."}</p>
                           <p className="card-text"><small class="text-muted">Author: {book.volumeInfo.authors[0]} </small></p>
                         </div>
                       </div>
