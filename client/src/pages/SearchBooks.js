@@ -44,8 +44,9 @@ class SearchBooks extends Component {
   loadBooks = () => {
     API.getBooks()
     .then(res => res.data.items.filter( data => data.searchInfo ))
-
+    // .then(data => console.log(data))
      .then(data => this.setState({booksData: data }))
+
 
   }
 
@@ -55,6 +56,7 @@ class SearchBooks extends Component {
     API.getBooks(this.state.title)
     .then(res => res.data.items.filter(this.dataValidator))
     .then(data => this.setState({booksData: data }))
+
 
   };
 
@@ -98,6 +100,7 @@ class SearchBooks extends Component {
                           <h5 className="card-title">{book.volumeInfo.title}</h5>
                           <p className="card-text">{book.volumeInfo.description.substr(0,150) + "..."}</p>
                           <p className="card-text"><small class="text-muted">Author: {book.volumeInfo.authors[0]} </small></p>
+                          <a href={book.volumeInfo.infoLink} ><button className="btn btn-danger">More Info</button></a>
                         </div>
                       </div>
                     </div>
