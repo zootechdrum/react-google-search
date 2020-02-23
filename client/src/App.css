@@ -11,8 +11,12 @@ body,
 .container {
  padding-right: 0px;
  padding-left: 0px;
+ overflow: hidden;
 }
 
+.book-search-input{
+  margin-top: 15px;
+}
 
 
 
