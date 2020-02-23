@@ -100,7 +100,10 @@ class SearchBooks extends Component {
                           <h5 className="card-title">{book.volumeInfo.title}</h5>
                           <p className="card-text">{book.volumeInfo.description.substr(0,150) + "..."}</p>
                           <p className="card-text"><small class="text-muted">Author: {book.volumeInfo.authors[0]} </small></p>
-                          <a href={book.volumeInfo.infoLink} ><button className="btn btn-danger">More Info</button></a>
+                          <div className="d-flex justify-content-start">
+                            <a href={book.volumeInfo.infoLink} ><button className="btn btn-danger">More Info</button></a>
+                            <a href={book.volumeInfo.infoLink} ><button className="btn btn-save btn-outline-dark">Save Book</button></a>
+                          </div>
                         </div>
                       </div>
                     </div>
