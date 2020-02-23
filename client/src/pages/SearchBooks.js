@@ -10,35 +10,42 @@ import { Input, FormBtn } from "../components/Form";
 class SearchBooks extends Component {
   state = {
 
-    booksData:[]
+    booksData:[],
+    searchNewBook:''
 
   };
 
   componentDidMount() {
     this.loadBooks();
   }
-  
-  checkData = (data) => {
 
-  }
+    handleInputChange = event => {
+    // Destructure the name and value properties off of event.target
+    // Update the appropriate state
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+  
 
   loadBooks = () => {
     API.getBooks()
     //  .then(res => console.log(res.data.items[0].volumeInfo.title))
     .then(res => res.data.items.filter( data => data.searchInfo ))
+
      .then(data => this.setState({booksData: data }))
 
-
-
   }
-  callcon = () => {
-    this.state.booksData.map((book,index) => {
-      console.log(book)
-      if(book.searchInfo !== undefined) {
-        console.log(book.searchInfo.textSnippet)
-      }
-    })
-  }
+
+  handleFormSubmit = event => {
+    console.log("Hello")
+    // When the form is submitted, prevent its default behaviour and get new books
+    event.preventDefault();
+    API.getBooks(this.state.title)
+    .then(res => this.setState({booksData: res.data.items }))
+
+  };
 
   render() {
     return (
@@ -57,7 +64,7 @@ class SearchBooks extends Component {
                     placeholder="Title (required)"
                   />
                   <FormBtn
-
+                        onClick={this.handleFormSubmit}
                   >
                     Submit Book
                   </FormBtn>
@@ -78,8 +85,8 @@ class SearchBooks extends Component {
                       <div className="col-md-8">
                         <div className="card-body">
                           <h5 className="card-title">Card title</h5>
-                          <p className="card-text">{book.searchInfo.textSnippet}</p>
-                          <p className="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                          <p className="card-text">{book.volumeInfo.description}</p>
+                          <p className="card-text"><small class="text-muted">Author: {book.volumeInfo.authors[0]} </small></p>
                         </div>
                       </div>
                     </div>
