@@ -44,7 +44,12 @@ class SearchBooks extends Component {
     console.log(id)
     for( let i = 0; i < this.state.booksData.length; i++) {
       if (this.state.booksData[i].id === id ) {
-        console.log(this.state.booksData[i])
+            API.saveBook({
+              title: this.state.booksData[i].volumeInfo.title,
+              author: this.state.booksData[i].volumeInfo.authors[0],
+              synopsis: this.state.booksData[i].volumeInfo.description,
+              image: this.state.booksData[i].volumeInfo.imageLinks.thumbnail
+        })
       }
 
     }
