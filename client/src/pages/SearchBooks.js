@@ -19,9 +19,9 @@ class SearchBooks extends Component {
     this.loadBooks();
   }
 
-    handleInputChange = event => {
-    // Destructure the name and value properties off of event.target
-    // Update the appropriate state
+  handleInputChange = event => {
+   // Destructure the name and value properties off of event.target
+  // Update the appropriate state
     const { name, value } = event.target;
     this.setState({
       [name]: value
@@ -38,7 +38,17 @@ class SearchBooks extends Component {
     {
       return arr;
     }
-  
+  }
+
+  saveBook = (id) => {
+    console.log(id)
+    for( let i = 0; i < this.state.booksData.length; i++) {
+      if (this.state.booksData[i].id === id ) {
+        console.log(this.state.booksData[i])
+      }
+
+    }
+
   }
 
   loadBooks = () => {
@@ -46,8 +56,6 @@ class SearchBooks extends Component {
     .then(res => res.data.items.filter( data => data.searchInfo ))
     // .then(data => console.log(data))
      .then(data => this.setState({booksData: data }))
-
-
   }
 
   handleFormSubmit = event => {
@@ -56,7 +64,6 @@ class SearchBooks extends Component {
     API.getBooks(this.state.title)
     .then(res => res.data.items.filter(this.dataValidator))
     .then(data => this.setState({booksData: data }))
-
 
   };
 
@@ -90,19 +97,19 @@ class SearchBooks extends Component {
               <List>
                 {this.state.booksData.map((book, index) => (
 
-                  <div className="card p-3">
+                  <div className="card p-3" key = {book.id}>
                     <div className="row no-gutters">
                       <div className="col-md-4 text-center">
-                      <img className="img-fluid books-img" src = {book.volumeInfo.imageLinks.thumbnail} alt="pokemon" />
+                        <img className="img-fluid books-img" src = {book.volumeInfo.imageLinks.thumbnail} alt="pokemon" />
                       </div>
                       <div className="col-md-8">
                         <div className="card-body">
                           <h5 className="card-title">{book.volumeInfo.title}</h5>
                           <p className="card-text">{book.volumeInfo.description.substr(0,150) + "..."}</p>
-                          <p className="card-text"><small class="text-muted">Author: {book.volumeInfo.authors[0]} </small></p>
+                          <p className="card-text"><small className="text-muted">Author: {book.volumeInfo.authors[0]} </small></p>
                           <div className="d-flex justify-content-start">
                             <a href={book.volumeInfo.infoLink} ><button className="btn btn-danger">More Info</button></a>
-                            <a href={book.volumeInfo.infoLink} ><button className="btn btn-save btn-outline-dark">Save Book</button></a>
+                            <button data-id = {book.id} onClick={(e) => this.saveBook(book.id)} className="btn btn-save btn-outline-dark">Save Book</button>
                           </div>
                         </div>
                       </div>
