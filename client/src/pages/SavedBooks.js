@@ -79,7 +79,7 @@ class SavedBooks extends Component {
                           <p className="card-text"><small className="text-muted">Author: {book.author} </small></p>
                           <div className="d-flex justify-content-start">
                             <a href={book.link} ><button className="btn btn-danger">More Info</button></a>
-                            <button data-id = {book.id} onClick={(e) => this.saveBook(book.id)} className="btn btn-save btn-outline-dark">Save Book</button>
+                            <button data-id = {book.id} onClick={(e) => this.saveBook(book.id)} className="btn btn-save btn-outline-dark">Delete Book</button>
                           </div>
                         </div>
                       </div>
