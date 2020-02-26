@@ -47,7 +47,7 @@ class SearchBooks extends Component {
             API.saveBook({
               title: this.state.booksData[i].volumeInfo.title,
               author: this.state.booksData[i].volumeInfo.authors[0],
-              synopsis: this.state.booksData[i].volumeInfo.description,
+              description: this.state.booksData[i].volumeInfo.description,
               image: this.state.booksData[i].volumeInfo.imageLinks.thumbnail,
               link: this.state.booksData[i].volumeInfo.infoLink
         })
