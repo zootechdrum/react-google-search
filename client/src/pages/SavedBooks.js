@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import booksImg from "../images/books1.png"
 import API from "../utils/API";
-import Jumbotron from "../components/Jumbotron"
+import Jumbotron from "../components/Jumbotron";
+import BookCard from "../components/BookCard";
 import { Link } from "react-router-dom";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
@@ -36,9 +37,8 @@ class SavedBooks extends Component {
 
   loadSavedBooks = () => {
     API.getSavedBooks()
-    // .then(res => res.data.items.filter( data => data.searchInfo ))
     .then(res => this.setState({savedData: res.data}))
-    // .then(res => console.log(res.data))
+
   }
 
 
