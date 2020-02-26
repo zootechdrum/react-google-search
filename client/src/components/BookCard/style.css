@@ -1,0 +1,14 @@
+
+
+.btn-save:focus {
+    background-color: lavender;
+}
+
+.redTxt {
+    color:red;
+}
+
+.redTxt:hover {
+    color:red;
+    background:transparent;
+}

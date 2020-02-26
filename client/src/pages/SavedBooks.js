@@ -86,6 +86,7 @@ class SavedBooks extends Component {
               <List>
                 {filterBook.map((book, index) => (
                   < BookCard
+                  title={book.title}
                     id={book.id}
                     image={book.image}
                     author={book.author}

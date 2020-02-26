@@ -5,13 +5,15 @@ import Jumbotron from "../components/Jumbotron"
 import { Link } from "react-router-dom";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
+import BookCard from "../components/BookCard";
 
 
 class SearchBooks extends Component {
   state = {
 
     booksData:[],
-    searchNewBook:''
+    searchNewBook:'',
+    savedStatus:false
 
   };
 
@@ -41,7 +43,6 @@ class SearchBooks extends Component {
   }
 
   saveBook = (id) => {
-    console.log(id)
     for( let i = 0; i < this.state.booksData.length; i++) {
       if (this.state.booksData[i].id === id ) {
             API.saveBook({
@@ -51,10 +52,10 @@ class SearchBooks extends Component {
               image: this.state.booksData[i].volumeInfo.imageLinks.thumbnail,
               link: this.state.booksData[i].volumeInfo.infoLink
         })
+        this.setState({savedStatus:true})
+        console.log(this.state)
       }
-
     }
-
   }
 
   loadBooks = () => {
@@ -74,6 +75,8 @@ class SearchBooks extends Component {
   };
 
   render() {
+
+
     return (
       <div>
           <Jumbotron backgroundColor="#E6E6FA" height={300} >
@@ -101,26 +104,20 @@ class SearchBooks extends Component {
           {this.state.booksData.length ? (
 
               <List>
-                {this.state.booksData.map((book, index) => (
 
-                  <div className="card p-3" key = {book.id}>
-                    <div className="row no-gutters">
-                      <div className="col-md-4 text-center">
-                        <img className="img-fluid books-img" src = {book.volumeInfo.imageLinks.thumbnail} alt="pokemon" />
-                      </div>
-                      <div className="col-md-8">
-                        <div className="card-body">
-                          <h5 className="card-title">{book.volumeInfo.title}</h5>
-                          <p className="card-text">{book.volumeInfo.description.substr(0,150) + "..."}</p>
-                          <p className="card-text"><small className="text-muted">Author: {book.volumeInfo.authors[0]} </small></p>
-                          <div className="d-flex justify-content-start">
-                            <a href={book.volumeInfo.infoLink} ><button className="btn btn-danger">More Info</button></a>
-                            <button data-id = {book.id} onClick={(e) => this.saveBook(book.id)} className="btn btn-save btn-outline-dark">Save Book</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                {this.state.booksData.map((book, index) => (
+                  < BookCard
+                  id={book.id}
+                  title={book.volumeInfo.title}
+                  image={book.volumeInfo.imageLinks.thumbnail}
+                  author={book.volumeInfo.authors[0]}
+                  descr={book.volumeInfo.description}
+                  link={book.volumeInfo.infoLink}
+                  btnText = {"Save Book"}
+                  onClick={(e) => this.saveBook(book.id)}
+                  btnStatus = {this.state.savedStatus}
+                />
+
                 ))}
 
               </List>
