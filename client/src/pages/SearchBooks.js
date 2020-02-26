@@ -76,7 +76,7 @@ class SearchBooks extends Component {
   render() {
     return (
       <div>
-          <Jumbotron backgroundColor="#E6E6FA" >
+          <Jumbotron backgroundColor="#E6E6FA" height={300} >
             <img className="img-fluid books-img" src = {booksImg} alt="book thumbnail" />
           </Jumbotron>
         <div className="container">

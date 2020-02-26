@@ -1,10 +1,11 @@
 import React from "react";
+import "./style.css";
 
-function Jumbotron({ children , backgroundColor }) {
+function Jumbotron({ children , backgroundColor , height }) {
   return (
     <div
-      style={{ height: 300, position:"relative", clear: "both",  textAlign: "center" , backgroundColor}}
-      className="jumbotron jumbotron-fluid"
+      style={{ height, position:"relative", clear: "both",  textAlign: "center" , backgroundColor}}
+      className="jumbotron jumbotron-fluid   "
     >
       {children}
     </div>

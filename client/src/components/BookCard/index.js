@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-function BookCard({id , image, author, title, descr , link, btnText}) {
+function BookCard({id , image, author, title, descr , link, btnText, onClick}) {
   return (
 
     <div className="card p-3" key = {id}>
@@ -17,7 +17,7 @@ function BookCard({id , image, author, title, descr , link, btnText}) {
           <p className="card-text"><small className="text-muted">Author: {author} </small></p>
           <div className="d-flex justify-content-start">
             <a href={link} ><button className="btn btn-danger">More Info</button></a>
-            <button data-id = {id} onClick={(e) => this.saveBook(id)} className="btn btn-save btn-outline-dark">{btnText}</button>
+            <button data-id = {id} onClick={onClick} className="btn btn-save btn-outline-dark">{btnText}</button>
           </div>
         </div>
       </div>

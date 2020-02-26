@@ -31,13 +31,21 @@ class SavedBooks extends Component {
   };
 
 
+  //Loads books after inital book is deleted. Updates state for updated array. 
+  deleteBook = id => {
+    API.deleteBook(id)
+      .then(res => this.loadSavedBooks())
+      .catch(err => console.log(err));
+  };
+
+
 
 
 
   loadSavedBooks = () => {
+
     API.getSavedBooks()
       .then(res => this.setState({ savedData: res.data }))
-
   }
 
 
@@ -54,8 +62,10 @@ class SavedBooks extends Component {
 
     return (
       <div>
-        <Jumbotron backgroundColor="#E6E6FA" >
-          <h1> This is your saved book </h1>
+        <Jumbotron height={200} backgroundColor="#E6E6FA" >
+          <header>
+            <h1 class="save-title">Saved Books</h1>
+          </header>
         </Jumbotron>
         <div className="container">
           <div className="row">
@@ -82,6 +92,7 @@ class SavedBooks extends Component {
                     descr={book.description}
                     link={book.link}
                     btnText = {"Delete Book"}
+                    onClick={() => this.deleteBook(book._id)}
                   />
                 ))}
 
