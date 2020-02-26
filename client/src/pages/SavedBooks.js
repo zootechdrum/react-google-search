@@ -11,7 +11,8 @@ class SavedBooks extends Component {
   state = {
 
     savedData:[],
-    searchNewBook:''
+    title: ''
+
 
   };
 
@@ -26,6 +27,7 @@ class SavedBooks extends Component {
     this.setState({
       [name]: value
     });
+    console.log(this.state)
   };
 
 
@@ -43,6 +45,14 @@ class SavedBooks extends Component {
 
 
   render() {
+ // Implented search functionality for saved books. 
+ // Destructures title and saved book from state
+ // only items that are found in list will be show
+    const {title, savedData } = this.state;
+    const filterBook = savedData.filter(book => 
+      book.title.toLowerCase().includes(title.toLowerCase())
+    )
+
     return (
       <div>
           <Jumbotron backgroundColor="#E6E6FA" >
@@ -65,7 +75,7 @@ class SavedBooks extends Component {
           {this.state.savedData.length ? (
 
               <List>
-                {this.state.savedData.map((book, index) => (
+                {filterBook.map((book, index) => (
 
                   <div className="card p-3" key = {book.id}>
                     <div className="row no-gutters">
