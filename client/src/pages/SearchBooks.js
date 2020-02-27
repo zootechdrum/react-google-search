@@ -53,7 +53,6 @@ class SearchBooks extends Component {
               link: this.state.booksData[i].volumeInfo.infoLink
         })
         this.setState({savedStatus:true})
-        console.log(this.state)
       }
     }
   }
