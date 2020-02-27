@@ -1,3 +1,5 @@
+
+require("dotenv").config();
 const express = require("express");
 
 const mongoose = require("mongoose");
@@ -16,7 +18,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactGoogleBooks");
+mongoose.connect(process.env.MONGODB_URIS || "mongodb://localhost/reactGoogleBooks");
 
 // Start the API server
 app.listen(PORT, function() {
